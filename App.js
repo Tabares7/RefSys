@@ -1,25 +1,14 @@
-import { StyleSheet } from 'react-native';
-import { NativeRouter } from 'react-router-native';
-import { Main } from './components/Main';
+// App.js
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import AppNavigator from './components/AppNavigator';
 
-export default function App() {
+const App = () => {
   return (
-    <NativeRouter>
-    <Main />
-    </NativeRouter>
+    <NavigationContainer>
+      <AppNavigator />
+    </NavigationContainer>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#2bf',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  status:{
-    color: '#fff',
-    fontSize: 30,
-    fontWeight: 'bold',
-  }
-});
+export default App;
