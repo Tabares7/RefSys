@@ -1,12 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { NativeRouter } from 'react-router-native';
+import { Main } from './components/Main';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.status}>Hola Caracola</Text>
-      <StatusBar style='dark'/>
-    </View>
+    <NativeRouter>
+
+    <Main />
+    </NativeRouter>
   );
 }
 
