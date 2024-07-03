@@ -5,7 +5,7 @@ export const Main = () => {
   return (
     <View >
         <Text>
-            Hello World!
+            Hello Madafaka!
         </Text>
     </View>
   )
