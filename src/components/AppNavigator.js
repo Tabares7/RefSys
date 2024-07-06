@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';  // Asegúrate de instalar esta librería
 import LoginScreen from '../screens/LoginScreen';
 import DashboardScreen from '../screens/DashboardScreen';
+import RegisterScreen from '../screens/RegisterScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -27,6 +28,8 @@ function AppNavigator() {
     >
       <Tab.Screen name="Dashboard" component={DashboardScreen} />
       <Tab.Screen name="Login" component={LoginScreen} />
+      <Tab.Screen name="Register" component={RegisterScreen} />
+
     </Tab.Navigator>
   );
 }

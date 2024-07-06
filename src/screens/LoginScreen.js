@@ -1,7 +1,6 @@
-// src/screens/LoginScreen.js
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, ActivityIndicator } from 'react-native';
-import { storeToken } from '../utils/authUtility'; // Importa la función para almacenar el token
+import { storeToken,  saveUser} from '../utils/authUtility';
 
 const LoginScreen = ({ navigation }) => {
     const [email, setEmail] = useState('');
@@ -21,15 +20,15 @@ const LoginScreen = ({ navigation }) => {
                 body: JSON.stringify({ email, password }),
             });
             const data = await response.json();
-            console.log(data)
             setLoading(false);
             if (response.ok) {
+                console.log('Login successful', data);
                 if (data.token) {
-                    // Guardar token en el almacenamiento seguro
                     await storeToken(data.token);
-                    navigation.navigate('Dashboard'); // Navega al Dashboard
+                    await saveUser(data.id);
+                    navigation.navigate('Dashboard');
                 } else {
-                    setError('Login failed: ' + data.message);
+                    setError('Login failed: Token not received');
                 }
             } else {
                 setError('Login failed: ' + data.message);

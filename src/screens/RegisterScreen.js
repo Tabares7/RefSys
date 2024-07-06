@@ -6,12 +6,12 @@ import { storeToken } from '../utils/authUtility'; // Importa la función para a
 const RegisterScreen = ({ navigation }) => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [phone, setPhone] = useState('');
+    const [phone, setPhone] = useState(''); 
     const [password, setPassword] = useState('');
 
     const handleRegister = async () => {
         try {
-            const response = await fetch('http://localhost:3000/api/clinics/register', {
+            const response = await fetch('http://192.168.0.8:5000/api/clinics/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
