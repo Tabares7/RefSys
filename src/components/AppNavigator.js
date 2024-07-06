@@ -4,10 +4,27 @@ import Icon from 'react-native-vector-icons/Ionicons';  // Asegúrate de instala
 import LoginScreen from '../screens/LoginScreen';
 import DashboardScreen from '../screens/DashboardScreen';
 import RegisterScreen from '../screens/RegisterScreen';
+import { useEffect, useState } from 'react';
+import { getUser } from '../utils/authUtility';
+
 
 const Tab = createBottomTabNavigator();
 
 function AppNavigator() {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getUser().then((user) => {
+      if (!user) {
+        
+      }else{
+        setUser(user);
+        setLoading(false);
+      }
+
+    });
+  });
   return (
     <Tab.Navigator
       screnOptions={
@@ -26,7 +43,12 @@ function AppNavigator() {
         })
       }
     >
-      <Tab.Screen name="Dashboard" component={DashboardScreen} />
+      <Tab.Screen name="Dashboard" component={DashboardScreen} options={
+        {
+          title: user ? user : 'Bienvenido',
+        }
+      
+      } />
       <Tab.Screen name="Login" component={LoginScreen} />
       <Tab.Screen name="Register" component={RegisterScreen} />
 

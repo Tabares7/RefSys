@@ -4,32 +4,20 @@ import { View, Text, ActivityIndicator,    Button } from 'react-native';
 import { getUser } from '../utils/authUtility';
 
 const DashboardScreen = ({navigation}) => {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    getUser().then((user) => {
-      if (!user) {
-        
-      }else{
-        setUser(user);
-        setLoading(false);
-      }
-
-    });
-  });
   
 
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }} >
-      {loading ? (
-                <ActivityIndicator size="large" color="#0000ff" />
-            ) : (
-              <Text>{user ? user : "Dashboard Screen" }</Text>
-
-            )}
+    <View style={{ flex: 1, alignItems: 'start', justifyContent: 'start' }} >
+      <Text>Dashboard Screen</Text>
+      <Button
+        title="Go to Details"
+        onPress={() => navigation.navigate('Details')}
+      />
     </View>
   );
 };
+
+
 
 export default DashboardScreen;
