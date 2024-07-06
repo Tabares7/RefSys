@@ -9,10 +9,21 @@ const Tab = createBottomTabNavigator();
 function AppNavigator() {
   return (
     <Tab.Navigator
-      screnOptions={{
-        activeTintColor: 'tomato',
-        inactiveTintColor: 'gray',
-      }}
+      screnOptions={
+        ({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName;
+
+            if (route.name === 'Dashboard') {
+              iconName = focused ? 'home' : 'home-outline';
+            } else if (route.name === 'Login') {
+              iconName = focused ? 'person' : 'person-outline';
+            }
+
+            return <Icon name={iconName} size={size} color={color} />;
+          },
+        })
+      }
     >
       <Tab.Screen name="Dashboard" component={DashboardScreen} />
       <Tab.Screen name="Login" component={LoginScreen} />
